@@ -1,5 +1,7 @@
 body {
   font-family: "Outfit", sans-serif;
+  background-image: url("clouds.jpg");
+  background-size: cover;
 }
 
 h1 {
@@ -30,16 +32,20 @@ li:first-letter {
 }
 .weather-wrap {
   max-width: 600px;
-  margin: 30px auto;
+  margin: 130px auto;
 }
 .weather-app {
   padding: 35px;
-  border: 1px solid #dadde1;
-  border-radius: 5px;
-  box-shadow: 3px 3px 3px #d3dbe2;
+  border: 1px solid #e9f2f7;
+  border-radius: 15px;
+  box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.3);
+  background-color: white;
 }
 .form-control {
   width: 110%;
+  background-color: #e9f2f7;
+  border-color: #e9f2f7;
+  border-radius: 6px;
 }
 
 .col-3 {
@@ -49,6 +55,7 @@ li:first-letter {
 .btn {
   background-color: #b1d8ef;
   border-color: #b1d8ef;
+  border-radius: 6px;
   padding-left: 15px;
   padding-right: 15px;
 }
@@ -89,6 +96,10 @@ li:first-letter {
   text-decoration: none;
 }
 
+.line-break {
+  opacity: 0.5;
+}
+
 .weather-forecast {
   margin-top: 20px;
   text-align: center;
@@ -106,4 +117,9 @@ li:first-letter {
 
 .forecast-temperature-min {
   opacity: 0.5;
+}
+
+.source-code {
+  padding-left: 15px;
+  padding-top: 5px;
 }

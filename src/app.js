@@ -26,15 +26,7 @@ function formatDate(timestamp) {
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
   let day = date.getDay();
-  let days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   return days[day];
 }
 
@@ -76,14 +68,14 @@ function displayForecast(response) {
 
 function getForecast(coordinates) {
   let apiKey = "9c071107246b07f6a0b6af613b122546";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(displayForecast);
 }
 
 function displayTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
-  celsiusTemp = response.data.main.temp;
-  temperatureElement.innerHTML = Math.round(celsiusTemp);
+  fahrenheitTemp = response.data.main.temp;
+  temperatureElement.innerHTML = Math.round(fahrenheitTemp);
   let cityElement = document.querySelector("#city");
   cityElement.innerHTML = response.data.name;
   let descriptionElement = document.querySelector("#description");
@@ -109,7 +101,7 @@ function displayTemperature(response) {
 
 function search(city) {
   let apiKey = "9c071107246b07f6a0b6af613b122546";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(displayTemperature);
 }
 
@@ -124,7 +116,6 @@ form.addEventListener("submit", handleSubmit);
 
 function displayFahrenheit(event) {
   event.preventDefault();
-  let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
   celsiusLink.classList.remove("active");
   fahrenheitLink.classList.add("active");
   let tempElement = document.querySelector("#temperature");
@@ -133,18 +124,19 @@ function displayFahrenheit(event) {
 
 function displayCelsius(event) {
   event.preventDefault();
+  let celsiusTemp = ((fahrenheitTemp - 32) * 5) / 9;
   fahrenheitLink.classList.remove("active");
   celsiusLink.classList.add("active");
   let tempElement = document.querySelector("#temperature");
   tempElement.innerHTML = Math.round(celsiusTemp);
 }
 
-let celsiusTemp = null;
-
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", displayFahrenheit);
+let fahrenheitTemp = null;
 
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsius);
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrenheit);
 
 search("San Diego");
