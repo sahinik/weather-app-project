@@ -38,10 +38,24 @@ li:first-letter {
   border-radius: 5px;
   box-shadow: 3px 3px 3px #d3dbe2;
 }
+.form-control {
+  width: 110%;
+}
+
+.col-3 {
+  padding-left: 45px;
+}
 
 .btn {
   background-color: #b1d8ef;
   border-color: #b1d8ef;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.btn:hover {
+  background-color: #68bef0;
+  border-color: #68bef0;
 }
 
 .overview {
@@ -83,6 +97,7 @@ li:first-letter {
 .forecast-date {
   font-size: 16px;
   color: black;
+  opacity: 0.6;
 }
 
 .forecast-temperatures {
